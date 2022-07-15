@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  customer-360:
+    image: customer-360:latest
+    ports:
+      - "8001:8001"
+  knowledge-base:
+    image: knowledge-base:latest
+    ports:
+      - "8002:8002"
+  agent-x:
+    image: agent-x:latest
+    ports:
+      - "8000:8000"
