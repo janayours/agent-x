@@ -17,7 +17,7 @@ body {
   margin: 0;
   padding: 0;
   color: white;
-  padding-top: 10px;
+  padding-top: 5px;
   background-color: rgb(229, 231, 235);
 }
 
@@ -25,6 +25,7 @@ body {
   list-style: none;
   cursor: pointer;
   padding: 10px;
+  border-radius: 0;
   border-end-end-radius: 5px;
   border-start-end-radius: 5px;
   box-shadow: 4px 4px 8px #0000001f;
@@ -34,6 +35,8 @@ body {
   cursor: pointer;
   background-color: #3876c4;
   margin-bottom: 5px;
+  width: 40px;
+  height:40px;
 }
 
 .agent-app > .react-tabs__tab-list .react-tabs__tab:focus:after{
@@ -42,11 +45,14 @@ body {
 
 .agent-app > .react-tabs__tab-list > .react-tabs__tab--selected {
   background-color: #e06b56;
+  color:white;
 }
 
 .agent-app > .react-tabs__tab-panel {
   display: none;
   width: calc(100% - 50px);
+  background-color: white;
+  padding: 20px;
 }
 
 .agent-app > .react-tabs__tab-panel--selected {

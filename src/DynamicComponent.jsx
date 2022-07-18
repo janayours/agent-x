@@ -46,7 +46,7 @@ const DynamicComponent = (props) => {
   });
 
   return (
-    <div className="bg-gray-200 ">
+    <div className="">
       <Suspense fallback={<div>loading...</div>}>
         <SafeLoading>
           <MFComp data={props}></MFComp>

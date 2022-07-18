@@ -6,6 +6,7 @@
     "build:dev": "webpack --mode development",
     "build:start": "cd dist && npx serve",
     "start": "webpack serve --open --mode development",
+    "start:local": "webpack serve --open --mode development --port 8000",
     "start:live": "webpack serve --open --mode development --live-reload --hot"
   },
   "license": "MIT",
@@ -35,8 +36,14 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.13.10",
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-regular-svg-icons": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "babel-plugin-macros": "^3.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-router-dom": "^6.3.0",
     "react-tabs": "^4.2.1"
   }
 }

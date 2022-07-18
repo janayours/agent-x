@@ -1,18 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { useState, useEffect } from "react";
-
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-
-import bulbIcon from "./images//bulb_white";
-import bookIcon from "./images//knowledge_base";
-
 import "./index.scss";
 import Header from "./Header";
-import Footer from "./Footer";
 import DynamicComponent from "./DynamicComponent";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import * as Icons from "@fortawesome/free-solid-svg-icons";
 
-// let loadedData ;
+const iconList = Object.keys(Icons)
+  .filter((key) => key !== "fas" && key !== "prefix")
+  .map((icon) => Icons[icon]);
+
+library.add(...iconList);
+
 const loadScope = (url, scope) => {
   const element = document.createElement("script");
 
@@ -26,11 +28,6 @@ const loadScope = (url, scope) => {
   document.head.appendChild(element);
   promise.finally(() => document.head.removeChild(element));
   return promise;
-};
-
-const iconMapping = {
-  'Customer360': bulbIcon,
-  'KnowledgeBase': bookIcon,
 };
 
 const getTabs = (data) => {
@@ -53,9 +50,11 @@ const getTabs = (data) => {
       <TabList>
         {data?.modules?.map((rec, index) => {
           if (rec.enabled == true) {
-            return <Tab key={"rec" + index}>
-            <img src={iconMapping[rec.componentName]} alt={rec.componentName} className="icon" />
-            </Tab>;
+            return (
+              <Tab key={"rec" + index}>
+                <FontAwesomeIcon icon={"fa-solid " + rec.componentIcon} />
+              </Tab>
+            );
           }
         })}
       </TabList>
@@ -65,12 +64,13 @@ const getTabs = (data) => {
 
 const App = () => {
   const [loadedComponents, setLoadedComponents] = useState(null);
-
+  const queryParams = new URLSearchParams(window.location.search);
+  const embeded = queryParams.get("embed");
   const loadComponentsInTabs = () => {
     fetch("https://putsreq.com/3vv2yzqGlKuSwoG5RPpe")
       .then((response) => response.json())
       .then((data) => {
-        // console.log(data.modules);
+        console.log(data.modules);
         setLoadedComponents(getTabs(data));
       });
   };
@@ -80,9 +80,9 @@ const App = () => {
   }, []);
   return (
     <div>
-      <Header></Header>
+      {embeded === "1" ? null : <Header></Header>}
+
       <div className="vertical-tab-container">{loadedComponents}</div>
-      {/* <Footer></Footer> */}
     </div>
   );
 };
