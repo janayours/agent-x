@@ -17,22 +17,31 @@ body {
   margin: 0;
   padding: 0;
   color: white;
-  background: #3c3e43;
+  padding-top: 10px;
+  background-color: rgb(229, 231, 235);
 }
 
 .agent-app > .react-tabs__tab-list .react-tabs__tab {
-  height: 70px;
   list-style: none;
-  padding: 12px 6px;
   cursor: pointer;
-  color: #bbb;
+  padding: 10px;
+  border-end-end-radius: 5px;
+  border-start-end-radius: 5px;
+  box-shadow: 4px 4px 8px #0000001f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #3876c4;
+  margin-bottom: 5px;
 }
 
-.agent-app > .react-tabs__tab--selected {
-  background: #1c1d1f;
-  border-color: #1c1d1f;
-  border-left: 4px solid #6eb800;
-  color: white;
+.agent-app > .react-tabs__tab-list .react-tabs__tab:focus:after{
+  content:none;
+}
+
+.agent-app > .react-tabs__tab-list > .react-tabs__tab--selected {
+  background-color: #e06b56;
 }
 
 .agent-app > .react-tabs__tab-panel {
@@ -49,7 +58,10 @@ body {
 }
 
 .agent-app > .react-tabs__tab-list > .react-tabs__tab--selected {
-  padding-left: 21px;
+  
+ 
+   
+
 }
 
 .agent-app > .react-tabs__tab-panel > .panel-content {

@@ -8,7 +8,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [".tsx", ".ts", ".jsx", ".js", ".json", ".JPG"],
+    extensions: [".tsx", ".ts", ".jsx", ".js", ".json", ".JPG", ".svg"],
   },
 
   devServer: {
@@ -30,7 +30,7 @@ module.exports = {
         use: ["style-loader", "css-loader", "postcss-loader"],
       },
       {
-        test: /\.(PNG|png|jpg|gif)$/i,
+        test: /\.(PNG|png|jpg|gif|svg)$/i,
         use: [
           {
             loader: 'url-loader',

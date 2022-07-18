@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
+import bulbIcon from "./images//bulb_white";
+import bookIcon from "./images//knowledge_base";
+
 import "./index.scss";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -23,6 +26,11 @@ const loadScope = (url, scope) => {
   document.head.appendChild(element);
   promise.finally(() => document.head.removeChild(element));
   return promise;
+};
+
+const iconMapping = {
+  'Customer360': bulbIcon,
+  'KnowledgeBase': bookIcon,
 };
 
 const getTabs = (data) => {
@@ -45,7 +53,9 @@ const getTabs = (data) => {
       <TabList>
         {data?.modules?.map((rec, index) => {
           if (rec.enabled == true) {
-            return <Tab key={"rec" + index}>{rec.componentName}</Tab>;
+            return <Tab key={"rec" + index}>
+            <img src={iconMapping[rec.componentName]} alt={rec.componentName} className="icon" />
+            </Tab>;
           }
         })}
       </TabList>
