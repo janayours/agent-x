@@ -28,29 +28,24 @@ const loadScope = (url, scope) => {
 const getTabs = (data) => {
   return (
     <Tabs className="agent-app">
-      
       {data?.modules?.map((rec, index) => {
-          if (rec.enabled == true) {
-            return (
-              <TabPanel>
-                <div className="panel-content">
-                  <DynamicComponent
-                    key={"dc_" + index}
-                    data={rec}
-                  ></DynamicComponent>
-                </div>
-              </TabPanel>
-            );
-          }
-        })}
-        <TabList>
+        if (rec.enabled == true) {
+          return (
+            <TabPanel key={"rec_tab" + index}>
+              <div className="panel-content">
+                <DynamicComponent
+                  key={"dc_" + index}
+                  data={rec}
+                ></DynamicComponent>
+              </div>
+            </TabPanel>
+          );
+        }
+      })}
+      <TabList>
         {data?.modules?.map((rec, index) => {
           if (rec.enabled == true) {
-            return (
-              <Tab>
-                {rec.componentName}
-              </Tab>
-            );
+            return <Tab key={"rec" + index}>{rec.componentName}</Tab>;
           }
         })}
       </TabList>
@@ -65,39 +60,19 @@ const App = () => {
     fetch("https://putsreq.com/3vv2yzqGlKuSwoG5RPpe")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.modules);
+        // console.log(data.modules);
         setLoadedComponents(getTabs(data));
       });
   };
-  // const loadComponents = () => {
-  //   fetch("https://putsreq.com/3vv2yzqGlKuSwoG5RPpe")
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //        console.log(data.modules);
-  //       setLoadedComponents(
-  //         data.modules?.map((rec, index) => {
-  //           if(rec.enabled==true)
-  //           {
-  //             return (
-  //               <DynamicComponent key={"dc_" + index} data={rec}></DynamicComponent>
-  //             );
-  //           }
-  //         })
-  //       );
-  //     });
-  // };
+
   useEffect(() => {
-    // loadComponents();
     loadComponentsInTabs();
   }, []);
   return (
     <div>
       <Header></Header>
-      <div className="flex">{/* {loadedComponents} */}</div>
-
       <div className="vertical-tab-container">{loadedComponents}</div>
-
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </div>
   );
 };

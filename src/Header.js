@@ -1,8 +1,8 @@
 import React from "react";
 
-import logo from "./images/logo.PNG";
+import logo from "./images/logo";
 
-import profile from "./images/profile.JPG";
+import profile from "./images/profile";
 
 import "./Header.scss"
 

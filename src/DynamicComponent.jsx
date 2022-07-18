@@ -33,11 +33,11 @@ const DynamicComponent = (props) => {
   };
 
   const MFComp = React.lazy(() => {
-    console.log(
-      props.data.componentURL || props.data.url,
-      props.data.componentName,
-      props.data.componentClass
-    );
+    // console.log(
+    //   props.data.componentURL || props.data.url,
+    //   props.data.componentName,
+    //   props.data.componentClass
+    // );
     return loadModule(
       props.data.componentURL || props.data.url,
       props.data.componentName,
