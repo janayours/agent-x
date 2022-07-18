@@ -8,7 +8,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
+    extensions: [".tsx", ".ts", ".jsx", ".js", ".json", ".JPG"],
   },
 
   devServer: {
@@ -28,6 +28,18 @@ module.exports = {
       {
         test: /\.(css|s[ac]ss)$/i,
         use: ["style-loader", "css-loader", "postcss-loader"],
+      },
+      {
+        test: /\.(PNG|png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            }
+          },
+        ],
+       type: 'javascript/auto'
       },
       {
         test: /\.(ts|tsx|js|jsx)$/,

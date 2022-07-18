@@ -4,7 +4,7 @@ import "./Footer.scss";
 function Footer() {
   return (
     <div className="navbar">
-      <a href="#news">Copyright @ HGS Digital</a>
+      <a href="#news">Copyright @ Agent-X</a>
     </div>
   );
 }

@@ -1,23 +1,46 @@
 .topnav {
-    overflow: hidden;
-    background-color: #333;
-  }
-  
-  .topnav a {
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-  }
-  
-  .topnav a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  .topnav a.active {
-    background-color: #04aa6d;
-    color: white;
-  }
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav {
+  background: transparent linear-gradient(93deg, #3876c4 0%, #3c8cbe 100%) 0% 0%
+    no-repeat padding-box;
+  box-shadow: 0px 3px 9px #0000000d;
+  opacity: 1;
+  color: white;
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+
+}
+.logo-cont span{
+  font-size:1.4rem;
+  font-weight: 300;
+}
+.logo-cont{
+  display: flex;
+  margin:10px;
+  align-items: center;
+}
+.logo-cont img{
+  max-width: 160px;
+}
+.profile-cont{
+  max-width: 130px;
+  margin:10px;
+}

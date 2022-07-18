@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { useState, useEffect } from "react";
 
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
 import "./index.scss";
 import Header from "./Header";
@@ -24,35 +25,77 @@ const loadScope = (url, scope) => {
   return promise;
 };
 
+const getTabs = (data) => {
+  return (
+    <Tabs className="agent-app">
+      
+      {data?.modules?.map((rec, index) => {
+          if (rec.enabled == true) {
+            return (
+              <TabPanel>
+                <div className="panel-content">
+                  <DynamicComponent
+                    key={"dc_" + index}
+                    data={rec}
+                  ></DynamicComponent>
+                </div>
+              </TabPanel>
+            );
+          }
+        })}
+        <TabList>
+        {data?.modules?.map((rec, index) => {
+          if (rec.enabled == true) {
+            return (
+              <Tab>
+                {rec.componentName}
+              </Tab>
+            );
+          }
+        })}
+      </TabList>
+    </Tabs>
+  );
+};
 
 const App = () => {
   const [loadedComponents, setLoadedComponents] = useState(null);
-  const loadComponents = () => {
+
+  const loadComponentsInTabs = () => {
     fetch("https://putsreq.com/3vv2yzqGlKuSwoG5RPpe")
       .then((response) => response.json())
       .then((data) => {
-        // console.log(data.modules);
-        setLoadedComponents(
-          data.modules?.map((rec, index) => {
-            if(rec.enabled==true)
-            {
-              return (
-                <DynamicComponent key={"dc_" + index} data={rec}></DynamicComponent>
-              );
-            }
-          })
-        );
+        console.log(data.modules);
+        setLoadedComponents(getTabs(data));
       });
   };
+  // const loadComponents = () => {
+  //   fetch("https://putsreq.com/3vv2yzqGlKuSwoG5RPpe")
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //        console.log(data.modules);
+  //       setLoadedComponents(
+  //         data.modules?.map((rec, index) => {
+  //           if(rec.enabled==true)
+  //           {
+  //             return (
+  //               <DynamicComponent key={"dc_" + index} data={rec}></DynamicComponent>
+  //             );
+  //           }
+  //         })
+  //       );
+  //     });
+  // };
   useEffect(() => {
-    loadComponents();
+    // loadComponents();
+    loadComponentsInTabs();
   }, []);
   return (
     <div>
       <Header></Header>
-      <div className="flex">
-        {loadedComponents}
-      </div>
+      <div className="flex">{/* {loadedComponents} */}</div>
+
+      <div className="vertical-tab-container">{loadedComponents}</div>
 
       <Footer></Footer>
     </div>

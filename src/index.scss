@@ -5,3 +5,58 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.agent-app  {
+  display: flex;
+  margin-left: 36px;
+ 
+  border: 1px solid #3c3e43;
+  color: white;
+  background: #1c1d1f;
+}
+
+.agent-app > .react-tabs__tab-list {
+  display: flex;
+  flex-direction: column;
+ width:50px;
+  margin: 0;
+  padding: 0;
+  color: white;
+  background: #3c3e43;
+}
+
+.agent-app > .react-tabs__tab-list .react-tabs__tab {
+  height: 70px;
+  list-style: none;
+  padding: 12px 6px;
+  cursor: pointer;
+  color: #bbb;
+}
+
+.agent-app > .react-tabs__tab--selected {
+  background: #1c1d1f;
+  border-color: #1c1d1f;
+  border-left: 4px solid #6eb800;
+  color: white;
+}
+
+.agent-app > .react-tabs__tab-panel {
+  display: none;
+  width: calc(100% - 50px);
+}
+
+.agent-app > .react-tabs__tab-panel--selected {
+  display: block;
+}
+
+.agent-app > .react-tabs__tab {
+  padding-left: 24px;
+}
+
+.agent-app > .react-tabs__tab--selected {
+  padding-left: 21px;
+}
+
+.agent-app > .react-tabs__tab-panel > .panel-content {
+  text-align: center;
+}
